@@ -1,0 +1,5 @@
+---
+# short key: full URL
+# Syntax: key: "https://..."
+github: "https://github.com"
+google: "https://google.com"
