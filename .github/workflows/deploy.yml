@@ -28,7 +28,7 @@ jobs:
         uses: pndurette/gh-pages-url-shortener-action@v2
         with:
           urls_config: "urls.yml"
-          default_redirect: "/"  # or "/index.html" if you have a home page
+          default_redirect: "Nothing here!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
