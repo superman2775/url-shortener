@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>My URL Shortener</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>My URL Shortener</h1>
+    <div class="input-section">
+      <input type="url" id="url-input" placeholder="Paste your long URL here" required />
+      <button id="shorten-btn">Shorten</button>
+    </div>
+    <div id="result" class="hide">
+      <p>Your short link:</p>
+      <a id="short-url" href="#" target="_blank"></a>
+      <button id="copy-btn">Copy</button>
+    </div>
+    <p id="info" class="info">
+      This is a static URL shortener. You must manually add the short key to <code>redirects.json</code> on GitHub.
+    </p>
+    <p id="error" class="error hide"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

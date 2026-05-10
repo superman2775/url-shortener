@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content="1;url=/" />
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: system-ui, sans-serif;
+      background: #f4f6f8;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    a { color: #007bff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Redirecting…</h1>
+    <p>If you are not redirected, <a href="/">go home</a>.</p>
+  </div>
+
+  <script>
+    const path = window.location.pathname;
+    const parts = path.slice(1).split("/");
+    const key = parts.length > 0 ? parts[0] : null;
+
+    // Load mapping from JSON (you can change this to a GitHub Issues API call later)
+    const REDIRECTS_URL = "/redirects.json";
+
+    fetch(REDIRECTS_URL)
+      .then(r => r.ok ? r.json() : { data: {} })
+      .then(json => {
+        const redirects = json || {};
+        if (key && redirects[key]) {
+          window.location.replace(redirects[key]);
+        } else {
+          document.body.innerHTML =
+            '<div class="container"><h1>Link not found</h1><p>Go <a href="/">home</a>.</p></div>';
+        }
+      })
+      .catch(() => {
+        document.body.innerHTML =
+          '<div class="container"><h1>Error loading links</h1><p>Go <a href="/">home</a>.</p></div>';
+      });
+  </script>
+</body>
+</html>
